@@ -1,0 +1,27 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!-- <property name="connection.username">adminCZFEcp8</property> -->
+		<!-- <property name="connection.password">EFz3iRXSP8dR</property> -->
+		<property name="connection.username">root</property>
+		<property name="connection.password">Macv3110</property>
+		<property name="connection.url">jdbc:mysql://127.10.150.2:3306/Read60</property>
+		<!-- <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property> -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hbm2ddl.auto">update</property>
+		<property name="show_sql">true</property>
+		<property name="connection.pool_size">1</property>
+
+		<mapping class="com.read60.rest.entity.Student" />
+		<mapping class="com.read60.rest.entity.Address" />
+		<mapping class="com.read60.rest.entity.Parent" />
+		<mapping class="com.read60.rest.entity.Teacher" />
+		<mapping class="com.read60.rest.entity.School" />
+		<mapping class="com.read60.rest.entity.Library" />
+		<mapping class="com.read60.rest.entity.Book" />
+		<mapping class="com.read60.rest.entity.ReadLog" />
+
+	</session-factory>
+</hibernate-configuration>  
