@@ -30,12 +30,15 @@ public class StudentService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response createStudent(Student student) throws JsonProcessingException {
-		String response = "Unsuccessful Post";
+		String response = null;
 		Student result = controller.create(student);
 
 		ObjectWriter writer = Util.mapper.writer();
 		response = writer.writeValueAsString(result);	//Throws exception when Nested Object needs to be serialized
 
+		if(response == null)
+			return Response.status(200).entity(Util.ErrorCode.DatabaseError).build();
+		
 		return Response.status(200).entity(response).build();
 	}
 
@@ -48,6 +51,9 @@ public class StudentService {
 		ObjectWriter writer = Util.mapper.writer();
 		response = writer.writeValueAsString(result);	//Throws exception when Nested Object needs to be serialized
 
+		if(response.isEmpty() || response == null)
+			return Response.status(200).entity(Util.ErrorCode.DatabaseError).build();
+		
 		return Response.status(200).entity(response).build();
 	}
 
@@ -61,6 +67,9 @@ public class StudentService {
 		ObjectWriter writer = Util.mapper.writer();
 		response = writer.writeValueAsString(result);	//Throws exception when Nested Object needs to be serialized
 
+		if(response == null)
+			return Response.status(200).entity(Util.ErrorCode.DatabaseError).build();
+		
 		return Response.status(200).entity(response).build();
 	}
 	
@@ -88,19 +97,24 @@ public class StudentService {
 		ObjectWriter writer = Util.mapper.writer();
 		response = writer.writeValueAsString(result);	//Throws exception when Nested Object needs to be serialized
 
+		if(response == null)
+			return Response.status(200).entity(Util.ErrorCode.DatabaseError).build();
+		
 		return Response.status(200).entity(response).build();
 	}
 
 	@PUT
 	public Response updateStudent(Student student) {
 		controller.udpate(student);
-		return Response.status(200).entity("Okay").build();
+		
+		
+		return Response.status(200).entity(Util.ErrorCode.Success).build();
 	}
 
 	@DELETE
 	public Response deleteStudent(Student student) {
 		controller.delete(student);
-		return Response.status(200).entity("Okay").build();
+		return Response.status(200).entity(Util.ErrorCode.Success).build();
 	}
 	
 }
