@@ -227,7 +227,7 @@
   <!--   xpoweredBy          Determines whether X-Powered-By response       -->
   <!--                       header is added by generated servlet.  [false] -->
 
-   <!--  <servlet>
+ <servlet>
         <servlet-name>jsp</servlet-name>
         <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
         <init-param>
@@ -239,25 +239,7 @@
             <param-value>false</param-value>
         </init-param>
         <load-on-startup>3</load-on-startup>
-    </servlet> -->
-
-<servlet>
-	<servlet-name>Read 60 RESTful Service</servlet-name>
-	<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-	<init-param>
-		<param-name>jersey.config.server.provider.packages</param-name>
-		<param-value>com.read60.rest.service;</param-value>
-	</init-param>
-	<init-param>
-		<param-name>org.glassfish.jersey.api.json.POJOMappingFeature</param-name>
-		<param-value>true</param-value>
-	</init-param>
-	<load-on-startup>1</load-on-startup>
-</servlet>
-	<servlet-mapping>
-		<servlet-name>Read 60 RESTful Service</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
-	</servlet-mapping>
+    </servlet>
 
   <!-- NOTE: An SSI Filter is also available as an alternative SSI          -->
   <!-- implementation. Use either the Servlet or the Filter but NOT both.   -->
