@@ -37,7 +37,7 @@ public class StudentService {
 		response = writer.writeValueAsString(result);	//Throws exception when Nested Object needs to be serialized
 
 		if(response == null)
-			return Response.status(200).entity(Util.ErrorCode.DatabaseError).build();
+			return Response.status(200).entity(Util.ErrorCode.DatabaseError.toJson()).build();
 		
 		return Response.status(200).entity(response).build();
 	}
@@ -52,7 +52,7 @@ public class StudentService {
 		response = writer.writeValueAsString(result);	//Throws exception when Nested Object needs to be serialized
 
 		if(response.isEmpty() || response == null)
-			return Response.status(200).entity(Util.ErrorCode.DatabaseError).build();
+			return Response.status(200).entity(Util.ErrorCode.DatabaseError.toJson()).build();
 		
 		return Response.status(200).entity(response).build();
 	}
@@ -68,7 +68,7 @@ public class StudentService {
 		response = writer.writeValueAsString(result);	//Throws exception when Nested Object needs to be serialized
 
 		if(response == null)
-			return Response.status(200).entity(Util.ErrorCode.DatabaseError).build();
+			return Response.status(200).entity(Util.ErrorCode.DatabaseError.toJson()).build();
 		
 		return Response.status(200).entity(response).build();
 	}
@@ -98,7 +98,7 @@ public class StudentService {
 		response = writer.writeValueAsString(result);	//Throws exception when Nested Object needs to be serialized
 
 		if(response == null)
-			return Response.status(200).entity(Util.ErrorCode.DatabaseError).build();
+			return Response.status(200).entity(Util.ErrorCode.DatabaseError.toJson()).build();
 		
 		return Response.status(200).entity(response).build();
 	}
@@ -108,13 +108,13 @@ public class StudentService {
 		controller.udpate(student);
 		
 		
-		return Response.status(200).entity(Util.ErrorCode.Success).build();
+		return Response.status(200).entity(Util.ErrorCode.Success.toJson()).build();
 	}
 
 	@DELETE
 	public Response deleteStudent(Student student) {
 		controller.delete(student);
-		return Response.status(200).entity(Util.ErrorCode.Success).build();
+		return Response.status(200).entity(Util.ErrorCode.Success.toJson()).build();
 	}
 	
 }

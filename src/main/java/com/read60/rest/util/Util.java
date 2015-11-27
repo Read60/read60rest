@@ -36,8 +36,15 @@ public class Util {
 	    	return mErrorCode == otherCode ? true : false ;
 	    }
 	    
-	    public String toJson() throws JsonProcessingException {
-	    	return new ObjectMapper().writeValueAsString(this);
+	    public String toJson() {
+	    	String response = null;;
+			try {
+				response = mapper.writeValueAsString(this);
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	return response;
 	    }
 
 		public int getmErrorCode() {
