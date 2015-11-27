@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Teacher {
 
 	private Long id;
+	
+	private Credentials credentials;
 	
 	private String firstName;
 	private String lastName;
@@ -40,6 +43,16 @@ public class Teacher {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	@OneToOne(cascade=CascadeType.ALL, mappedBy ="teacher")
+	@JsonIgnore
+	public Credentials getCredentials() {
+		return credentials;
+	}
+
+	public void setCredentials(Credentials credentials) {
+		this.credentials = credentials;
 	}
 
 	public String getFirstName() {

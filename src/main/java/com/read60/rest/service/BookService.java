@@ -10,7 +10,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,8 +24,8 @@ public class BookService {
 	BookController controller = new BookController();
 
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/json")
+	@Produces("application/json")
 	public Response createBook(Book book) throws JsonProcessingException {
 		String response = "Unsuccessful Post";
 		Book result = controller.create(book);
@@ -38,7 +37,7 @@ public class BookService {
 	}
 
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
 	public Response retrieveAllBooks() throws JsonProcessingException {
 		String response = "Unsuccessful Get";
 		List<Book> result = controller.retrieveAll();
@@ -51,7 +50,7 @@ public class BookService {
 
 	@GET
 	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
 	public Response retrieveBook(@PathParam("id") String id) throws JsonProcessingException {
 		String response = "Unsuccessful Get";
 		Book result = controller.retrieve(Long.parseLong(id));

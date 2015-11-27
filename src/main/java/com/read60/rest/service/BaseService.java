@@ -1,4 +1,3 @@
-package com.read60.rest.service;
 /*package com.read60.rest.service;
 
 import java.util.List;

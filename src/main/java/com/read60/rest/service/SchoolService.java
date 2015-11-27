@@ -11,7 +11,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -28,8 +27,8 @@ public class SchoolService {
 	SchoolController controller = new SchoolController();
 	
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/json")
+	@Produces("application/json")
 	public Response createSchool(School school) throws JsonProcessingException {
 		String response = "Unsuccessful Post";
 		School result = controller.create(school);
@@ -41,7 +40,7 @@ public class SchoolService {
 	}
 
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
 	public Response retrieveAllSchools() throws JsonProcessingException {
 		String response = "Unsuccessful Get";
 		List<School> result = controller.retrieveAll();
@@ -54,7 +53,7 @@ public class SchoolService {
 
 	@GET
 	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
 	public Response retrieveSchool(@PathParam("id") String id) throws JsonProcessingException {
 		String response = "Unsuccessful Get";
 		School result = controller.retrieve(Long.parseLong(id));
@@ -67,7 +66,7 @@ public class SchoolService {
 	
 	@GET
 	@Path("/{id}/students")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
 	public Response retrieveStudents(@PathParam("id") String id) throws JsonProcessingException {
 		String response = "Unsuccessful Get";
 		Set<Student> result = controller.retrieveStudents(Long.parseLong(id));
@@ -80,7 +79,7 @@ public class SchoolService {
 	
 	@GET
 	@Path("/{id}/teachers")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
 	public Response retrieveSchoolTeachers(@PathParam("id") String id) throws JsonProcessingException {
 		String response = "Unsuccessful Get";
 		Set<Teacher> result = controller.retrieveTeachers(Long.parseLong(id));

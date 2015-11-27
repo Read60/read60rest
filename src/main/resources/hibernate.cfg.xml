@@ -20,6 +20,7 @@
 		<mapping class="com.read60.rest.entity.Library" />
 		<mapping class="com.read60.rest.entity.Book" />
 		<mapping class="com.read60.rest.entity.ReadLog" />
+		<mapping class="com.read60.rest.entity.Credentials" />
 
 	</session-factory>
 </hibernate-configuration>  

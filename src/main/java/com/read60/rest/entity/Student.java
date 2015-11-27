@@ -32,6 +32,8 @@ public class Student {
 
 	private Long id;
 	
+	private Credentials credentials;
+	
 	private Date insertDate;
 	
 	private String firstName;
@@ -58,6 +60,14 @@ public class Student {
 	public void setId(Long id) {
 		this.id = id;
 	}	
+	@OneToOne(cascade=CascadeType.ALL, mappedBy ="student")
+	@JsonIgnore
+	public Credentials getCredentials() {
+		return credentials;
+	}
+	public void setCredentials(Credentials credentials) {
+		this.credentials = credentials;
+	}
 	public String getFirstName() {
 		return firstName;
 	}

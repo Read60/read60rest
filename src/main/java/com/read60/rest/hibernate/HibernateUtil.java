@@ -20,6 +20,7 @@ public class HibernateUtil {
         conf.addAnnotatedClass(com.read60.rest.entity.ReadLog.class);
         conf.addAnnotatedClass(com.read60.rest.entity.Library.class);
         conf.addAnnotatedClass(com.read60.rest.entity.Book.class);
+        conf.addAnnotatedClass(com.read60.rest.entity.Credentials.class);
         conf.configure();  
         serviceRegistry = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();  
         try {  

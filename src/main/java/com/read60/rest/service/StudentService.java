@@ -10,7 +10,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -27,23 +26,20 @@ public class StudentService {
 	StudentController controller = new StudentController();
 
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/json")
+	@Produces("application/json")
 	public Response createStudent(Student student) throws JsonProcessingException {
-		String response = null;
+		String response = "Unsuccessful Post";
 		Student result = controller.create(student);
 
 		ObjectWriter writer = Util.mapper.writer();
 		response = writer.writeValueAsString(result);	//Throws exception when Nested Object needs to be serialized
 
-		if(response == null)
-			return Response.status(200).entity(Util.ErrorCode.DatabaseError.toJson()).build();
-		
 		return Response.status(200).entity(response).build();
 	}
 
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
 	public Response retrieveAllStudents() throws JsonProcessingException {
 		String response = "Unsuccessful Get";
 		List<Student> result = controller.retrieveAll();
@@ -51,15 +47,12 @@ public class StudentService {
 		ObjectWriter writer = Util.mapper.writer();
 		response = writer.writeValueAsString(result);	//Throws exception when Nested Object needs to be serialized
 
-		if(response.isEmpty() || response == null)
-			return Response.status(200).entity(Util.ErrorCode.DatabaseError.toJson()).build();
-		
 		return Response.status(200).entity(response).build();
 	}
 
 	@GET
 	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
 	public Response retrieveStudent(@PathParam("id") String id) throws JsonProcessingException {
 		String response = "Unsuccessful Get";
 		Student result = controller.retrieve(Long.parseLong(id));
@@ -67,15 +60,12 @@ public class StudentService {
 		ObjectWriter writer = Util.mapper.writer();
 		response = writer.writeValueAsString(result);	//Throws exception when Nested Object needs to be serialized
 
-		if(response == null)
-			return Response.status(200).entity(Util.ErrorCode.DatabaseError.toJson()).build();
-		
 		return Response.status(200).entity(response).build();
 	}
 	
 	@GET
 	@Path("/{id}/log")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
 	public Response retrieveStudentLog(@PathParam("id") String id) throws JsonProcessingException {
 		String response = "Unsuccessful Get";
 		
@@ -88,7 +78,7 @@ public class StudentService {
 	
 	@GET
 	@Path("/{id}/library")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
 	public Response retrieveStudentLibrary(@PathParam("id") String id) throws JsonProcessingException {
 		String response = "Unsuccessful Get";
 		
@@ -97,24 +87,19 @@ public class StudentService {
 		ObjectWriter writer = Util.mapper.writer();
 		response = writer.writeValueAsString(result);	//Throws exception when Nested Object needs to be serialized
 
-		if(response == null)
-			return Response.status(200).entity(Util.ErrorCode.DatabaseError.toJson()).build();
-		
 		return Response.status(200).entity(response).build();
 	}
 
 	@PUT
 	public Response updateStudent(Student student) {
 		controller.udpate(student);
-		
-		
 		return Response.status(200).entity(Util.ErrorCode.Success.toJson()).build();
 	}
 
 	@DELETE
 	public Response deleteStudent(Student student) {
 		controller.delete(student);
-		return Response.status(200).entity(Util.ErrorCode.Success.toJson()).build();
+		return Response.status(200).entity("Okay").build();
 	}
 	
 }
