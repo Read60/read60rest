@@ -15,12 +15,14 @@ import javax.ws.rs.core.Response;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.read60.rest.authentication.Secured;
 import com.read60.rest.controller.TeacherController;
 import com.read60.rest.entity.School;
 import com.read60.rest.entity.Student;
 import com.read60.rest.entity.Teacher;
 import com.read60.rest.util.Util;
 
+@Secured
 @Path("/teachers")
 public class TeacherService {
 

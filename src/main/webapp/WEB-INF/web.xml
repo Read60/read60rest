@@ -19,13 +19,5 @@
 	<servlet-mapping>
 		<servlet-name>Read 60 RESTful Service</servlet-name>
 		<url-pattern>/*</url-pattern>
-	</servlet-mapping>
-	<filter>
-		<filter-name>AuthenticationFilter</filter-name>
-		<filter-class>com.read60.rest.authentication.AuthenticationFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>AuthenticationFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	</servlet-mapping>	
 </web-app>

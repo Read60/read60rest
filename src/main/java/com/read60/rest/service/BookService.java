@@ -14,10 +14,12 @@ import javax.ws.rs.core.Response;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.read60.rest.authentication.Secured;
 import com.read60.rest.controller.BookController;
 import com.read60.rest.entity.Book;
 import com.read60.rest.util.Util;
 
+@Secured
 @Path("/books")
 public class BookService {
 

@@ -14,12 +14,14 @@ import javax.ws.rs.core.Response;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.read60.rest.authentication.Secured;
 import com.read60.rest.controller.StudentController;
 import com.read60.rest.entity.Library;
 import com.read60.rest.entity.ReadLog;
 import com.read60.rest.entity.Student;
 import com.read60.rest.util.Util;
 
+@Secured
 @Path("/students")
 public class StudentService {
 
@@ -93,13 +95,13 @@ public class StudentService {
 	@PUT
 	public Response updateStudent(Student student) {
 		controller.udpate(student);
-		return Response.status(200).entity(Util.ErrorCode.Success.toJson()).build();
+		return Response.status(200).build();
 	}
 
 	@DELETE
 	public Response deleteStudent(Student student) {
 		controller.delete(student);
-		return Response.status(200).entity("Okay").build();
+		return Response.status(200).build();
 	}
 	
 }

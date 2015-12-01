@@ -15,11 +15,13 @@ import javax.ws.rs.core.Response;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.read60.rest.authentication.Secured;
 import com.read60.rest.controller.ParentController;
 import com.read60.rest.entity.Parent;
 import com.read60.rest.entity.Student;
 import com.read60.rest.util.Util;
 
+@Secured
 @Path("/parents")
 public class ParentService {
 
