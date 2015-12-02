@@ -33,10 +33,8 @@ public class GatewayService {
 		Credentials result = credController.create(credentials);
 
 		ObjectWriter writer = Util.mapper.writer();
-		response = writer.writeValueAsString(result); // Throws exception when
-														// Nested Object needs
-														// to be serialized
-
+		response = writer.writeValueAsString(result);
+		
 		return Response.status(200).entity(response).build();
 	}
 
@@ -66,7 +64,7 @@ public class GatewayService {
 			return null;
 
 		return user.getStudent();
-	}
+	}	
 
 	private Token issueToken(Long studentId) {
 		Token token = new Token();

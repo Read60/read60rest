@@ -1,6 +1,10 @@
 package com.read60.rest.controller;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import org.hibernate.Query;
 
 import com.read60.rest.entity.School;
 import com.read60.rest.entity.Student;
@@ -11,18 +15,27 @@ public class TeacherController extends GenericController<Teacher> implements Tea
 
 	public TeacherController() {
 		super(Teacher.class);
-		// TODO Auto-generated constructor stu
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Set<Student> retrieveStudents(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Set<Student> students = null;
+		session = sessionFactory.openSession();
+		session.beginTransaction();
+		Query q = session.createQuery("from Student student WHERE student.teacher.id=:teacher_id ORDER BY student.lastName");
+		q.setParameter("teacher_id", id);
+		List<Student> temp = q.list();
+		students = new HashSet<Student>(temp);
+		session.close();
+		return students;
 	}
 
 	@Override
 	public School retrieveSchool(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		School school = null;
+		Teacher teacher = retrieve(id);
+		school = teacher.getSchool();
+		return school;
 	}
 }

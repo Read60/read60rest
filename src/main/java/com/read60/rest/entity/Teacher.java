@@ -95,7 +95,7 @@ public class Teacher {
 		this.homePhone = homePhone;
 	}
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="school_id")
 	@JsonIgnore
 	public School getSchool() {

@@ -44,7 +44,7 @@ public class SchoolService {
 	@GET
 	@Produces("application/json")
 	public Response retrieveAllSchools() throws JsonProcessingException {
-		String response = "Unsuccessful Get";
+		String response = null;
 		List<School> result = controller.retrieveAll();
 
 		ObjectWriter writer = Util.mapper.writer();
