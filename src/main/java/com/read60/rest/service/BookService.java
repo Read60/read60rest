@@ -19,7 +19,7 @@ import com.read60.rest.controller.BookController;
 import com.read60.rest.entity.Book;
 import com.read60.rest.util.Util;
 
-@Secured
+//@Secured //TODO: Uncomment for security
 @Path("/books")
 public class BookService {
 

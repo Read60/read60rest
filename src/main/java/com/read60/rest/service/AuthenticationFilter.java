@@ -20,7 +20,7 @@ import com.read60.rest.authentication.Secured;
 import com.read60.rest.controller.TokenController;
 import com.read60.rest.entity.Token;
 
-@Secured
+//@Secured //TODO: Uncomment for security
 @Provider
 @Priority(Priorities.AUTHENTICATION)
 public class AuthenticationFilter implements ContainerRequestFilter {
