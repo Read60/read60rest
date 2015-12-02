@@ -20,7 +20,7 @@ import com.read60.rest.authentication.Secured;
 import com.read60.rest.controller.TokenController;
 import com.read60.rest.entity.Token;
 
-//@Secured //TODO: Uncomment for security
+//@Secured 
 @Provider
 @Priority(Priorities.AUTHENTICATION)
 public class AuthenticationFilter implements ContainerRequestFilter {
@@ -36,7 +36,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 		// Check if the HTTP Authorization header is present and formatted
 		// correctly
 		if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
-			//throw new NotAuthorizedException("Authorization header must be provided"); //TODO: Uncomment for Security
+			throw new NotAuthorizedException("Authorization header must be provided"); //TODO: Uncomment for Security
 		}
 
 		// Extract the token from the HTTP Authorization header
@@ -44,7 +44,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
 		// Validate the token
 		if (!validateToken(tokenKey)) {
-			//requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build()); //TODO: Uncomment for Security
+			requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build()); //TODO: Uncomment for Security
 		}
 
 	}
