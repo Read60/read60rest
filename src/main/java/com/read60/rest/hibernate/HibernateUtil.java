@@ -11,6 +11,10 @@ public class HibernateUtil {
     private static final ServiceRegistry serviceRegistry;  
       
     static {  
+    	/*
+    	 * IMPORTANT!!!!!!!
+    	 * Must put all annotatedclasses in the hibernate.cfg file (src/main/resources)
+    	 */
         Configuration conf = new Configuration();  
         conf.addAnnotatedClass(com.read60.rest.entity.Student.class);
         conf.addAnnotatedClass(com.read60.rest.entity.Address.class);
@@ -20,9 +24,9 @@ public class HibernateUtil {
         conf.addAnnotatedClass(com.read60.rest.entity.ReadLog.class);
         conf.addAnnotatedClass(com.read60.rest.entity.Library.class);
         conf.addAnnotatedClass(com.read60.rest.entity.Book.class);
-        conf.addAnnotatedClass(com.read60.rest.entity.Lead.class);
         conf.addAnnotatedClass(com.read60.rest.entity.Credentials.class);
         conf.addAnnotatedClass(com.read60.rest.entity.Token.class);
+        conf.addAnnotatedClass(com.read60.rest.entity.Lead.class);
         conf.configure();  
         serviceRegistry = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();  
         try {  
