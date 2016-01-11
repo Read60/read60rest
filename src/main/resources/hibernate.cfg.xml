@@ -17,12 +17,12 @@
 		<mapping class="com.read60.rest.entity.Parent" />
 		<mapping class="com.read60.rest.entity.Teacher" />
 		<mapping class="com.read60.rest.entity.School" />
+		<mapping class="com.read60.rest.entity.ReadLog" />
 		<mapping class="com.read60.rest.entity.Library" />
 		<mapping class="com.read60.rest.entity.Book" />
-		<mapping class="com.read60.rest.entity.Lead" />
-		<mapping class="com.read60.rest.entity.Token" />
-		<mapping class="com.read60.rest.entity.ReadLog" />
 		<mapping class="com.read60.rest.entity.Credentials" />
+		<mapping class="com.read60.rest.entity.Token" />
+		<mapping class="com.read60.rest.entity.Lead" />
 
 	</session-factory>
 </hibernate-configuration>  
