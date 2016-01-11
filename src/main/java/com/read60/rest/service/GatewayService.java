@@ -12,8 +12,10 @@ import javax.ws.rs.core.Response;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.read60.rest.controller.CredentialsController;
+import com.read60.rest.controller.LeadController;
 import com.read60.rest.controller.TokenController;
 import com.read60.rest.entity.Credentials;
+import com.read60.rest.entity.Lead;
 import com.read60.rest.entity.Student;
 import com.read60.rest.entity.Token;
 import com.read60.rest.util.Util;
@@ -23,7 +25,22 @@ public class GatewayService {
 
 	CredentialsController credController = new CredentialsController();
 	TokenController tokenController = new TokenController();
+	LeadController leadController = new LeadController();
 
+	@POST
+	@Path("/register/lead")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response register(Lead lead) throws JsonProcessingException {
+		String response = "Unsuccessful Post";
+		Lead result = leadController.create(lead);
+
+		ObjectWriter writer = Util.mapper.writer();
+		response = writer.writeValueAsString(result);
+		
+		return Response.status(200).entity(response).build();
+	}
+	
 	@POST
 	@Path("/register")
 	@Consumes("application/json")
