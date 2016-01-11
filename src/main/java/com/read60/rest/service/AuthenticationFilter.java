@@ -25,7 +25,7 @@ import com.read60.rest.entity.Token;
 @Priority(Priorities.AUTHENTICATION)
 public class AuthenticationFilter implements ContainerRequestFilter {
 
-	TokenController controller = new TokenController();
+	//TokenController controller = new TokenController();
 
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
@@ -49,7 +49,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 */
 	}
 
-	private boolean validateToken(String tokenKey) {
+	/*private boolean validateToken(String tokenKey) {
 		Token token = controller.retrieveToken(tokenKey);
 		
 		if(token == null)
@@ -68,6 +68,6 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 		}
 		
 		return true;
-	}
+	}*/
 
 }
