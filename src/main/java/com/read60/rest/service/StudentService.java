@@ -21,7 +21,7 @@ import com.read60.rest.entity.ReadLog;
 import com.read60.rest.entity.Student;
 import com.read60.rest.util.Util;
 
-//@Secured //TODO: Uncomment for security
+@Secured //TODO: Uncomment for security
 @Path("/students")
 public class StudentService {
 

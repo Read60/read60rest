@@ -21,7 +21,7 @@ import com.read60.rest.entity.Parent;
 import com.read60.rest.entity.Student;
 import com.read60.rest.util.Util;
 
-//@Secured //TODO: Uncomment for security
+@Secured //TODO: Uncomment for security
 @Path("/parents")
 public class ParentService {
 

@@ -22,7 +22,7 @@ import com.read60.rest.entity.Student;
 import com.read60.rest.entity.Teacher;
 import com.read60.rest.util.Util;
 
-//@Secured //TODO: Uncomment for security
+@Secured //TODO: Uncomment for security
 @Path("/schools")
 public class SchoolService {
 	
