@@ -42,6 +42,7 @@ public class SchoolService {
 	}
 
 	@GET
+	@Secured
 	@Produces("application/json")
 	public Response retrieveAllSchools() throws JsonProcessingException {
 		String response = null;
@@ -54,6 +55,7 @@ public class SchoolService {
 	}
 
 	@GET
+	@Secured
 	@Path("/{id}")
 	@Produces("application/json")
 	public Response retrieveSchool(@PathParam("id") String id) throws JsonProcessingException {
@@ -67,6 +69,7 @@ public class SchoolService {
 	}
 	
 	@GET
+	@Secured
 	@Path("/{id}/students")
 	@Produces("application/json")
 	public Response retrieveStudents(@PathParam("id") String id) throws JsonProcessingException {
@@ -80,6 +83,7 @@ public class SchoolService {
 	}
 	
 	@GET
+	@Secured
 	@Path("/{id}/teachers")
 	@Produces("application/json")
 	public Response retrieveSchoolTeachers(@PathParam("id") String id) throws JsonProcessingException {
@@ -93,12 +97,14 @@ public class SchoolService {
 	}
 
 	@PUT
+	@Secured
 	public Response updateSchool(School school) {
 		controller.udpate(school);
 		return Response.status(200).entity("Okay").build();
 	}
 
 	@DELETE
+	@Secured
 	public Response deleteSchool(School school) {
 		controller.delete(school);
 		return Response.status(200).entity("Okay").build();

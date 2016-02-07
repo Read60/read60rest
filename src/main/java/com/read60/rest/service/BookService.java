@@ -26,6 +26,7 @@ public class BookService {
 	BookController controller = new BookController();
 
 	@POST
+	@Secured
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response createBook(Book book) throws JsonProcessingException {
@@ -39,6 +40,7 @@ public class BookService {
 	}
 
 	@GET
+	@Secured
 	@Produces("application/json")
 	public Response retrieveAllBooks() throws JsonProcessingException {
 		String response = "Unsuccessful Get";
@@ -51,6 +53,7 @@ public class BookService {
 	}
 
 	@GET
+	@Secured
 	@Path("/{id}")
 	@Produces("application/json")
 	public Response retrieveBook(@PathParam("id") String id) throws JsonProcessingException {
@@ -64,12 +67,14 @@ public class BookService {
 	}
 
 	@PUT
+	@Secured
 	public Response updateBook(Book book) {
 		controller.udpate(book);
 		return Response.status(200).entity("Okay").build();
 	}
 
 	@DELETE
+	@Secured
 	public Response deleteBook(Book book) {
 		controller.delete(book);
 		return Response.status(200).entity("Okay").build();

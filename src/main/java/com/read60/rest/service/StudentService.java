@@ -20,8 +20,7 @@ import com.read60.rest.entity.Library;
 import com.read60.rest.entity.ReadLog;
 import com.read60.rest.entity.Student;
 import com.read60.rest.util.Util;
-
-@Secured //TODO: Uncomment for security
+ 
 @Path("/students")
 public class StudentService {
 
@@ -39,8 +38,9 @@ public class StudentService {
 
 		return Response.status(200).entity(response).build();
 	}
-
+	
 	@GET
+	@Secured
 	@Produces("application/json")
 	public Response retrieveAllStudents() throws JsonProcessingException {
 		String response = "Unsuccessful Get";
@@ -53,6 +53,7 @@ public class StudentService {
 	}
 
 	@GET
+	@Secured
 	@Path("/{id}")
 	@Produces("application/json")
 	public Response retrieveStudent(@PathParam("id") String id) throws JsonProcessingException {
@@ -66,6 +67,7 @@ public class StudentService {
 	}
 	
 	@GET
+	@Secured
 	@Path("/{id}/log")
 	@Produces("application/json")
 	public Response retrieveStudentLog(@PathParam("id") String id) throws JsonProcessingException {
@@ -79,6 +81,7 @@ public class StudentService {
 	}
 	
 	@GET
+	@Secured
 	@Path("/{id}/library")
 	@Produces("application/json")
 	public Response retrieveStudentLibrary(@PathParam("id") String id) throws JsonProcessingException {
@@ -93,12 +96,14 @@ public class StudentService {
 	}
 
 	@PUT
+	@Secured
 	public Response updateStudent(Student student) {
 		controller.udpate(student);
 		return Response.status(200).build();
 	}
 
 	@DELETE
+	@Secured
 	public Response deleteStudent(Student student) {
 		controller.delete(student);
 		return Response.status(200).build();

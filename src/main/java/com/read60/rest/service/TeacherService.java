@@ -22,7 +22,6 @@ import com.read60.rest.entity.Student;
 import com.read60.rest.entity.Teacher;
 import com.read60.rest.util.Util;
 
-@Secured //TODO: Uncomment for security
 @Path("/teachers")
 public class TeacherService {
 
@@ -42,6 +41,7 @@ TeacherController controller = new TeacherController();
 	}
 
 	@GET
+	@Secured
 	@Produces("application/json")
 	public Response retrieveAllTeachers() throws JsonProcessingException {
 		String response = "Unsuccessful Get";
@@ -54,6 +54,7 @@ TeacherController controller = new TeacherController();
 	}
 
 	@GET
+	@Secured
 	@Path("/{id}")
 	@Produces("application/json")
 	public Response retrieveTeacher(@PathParam("id") String id) throws JsonProcessingException {
@@ -67,6 +68,7 @@ TeacherController controller = new TeacherController();
 	}
 	
 	@GET
+	@Secured
 	@Path("/{id}/students")
 	@Produces("application/json")
 	public Response retrieveStudents(@PathParam("id") String id) throws JsonProcessingException {
@@ -80,6 +82,7 @@ TeacherController controller = new TeacherController();
 	}
 	
 	@GET
+	@Secured
 	@Path("/{id}/school")
 	@Produces("application/json")
 	public Response retrieveSchool(@PathParam("id") String id) throws JsonProcessingException {
@@ -93,12 +96,14 @@ TeacherController controller = new TeacherController();
 	}
 
 	@PUT
+	@Secured
 	public Response updateTeacher(Teacher teacher) {
 		controller.udpate(teacher);
 		return Response.status(200).entity("Okay").build();
 	}
 
 	@DELETE
+	@Secured
 	public Response deleteSchool(Teacher teacher) {
 		controller.delete(teacher);
 		return Response.status(200).entity("Okay").build();

@@ -41,6 +41,7 @@ public class ParentService {
 	}
 
 	@GET
+	@Secured
 	@Produces("application/json")
 	public Response retrieveAllParents() throws JsonProcessingException {
 		String response = "Unsuccessful Get";
@@ -53,6 +54,7 @@ public class ParentService {
 	}
 
 	@GET
+	@Secured
 	@Path("/{id}")
 	@Produces("application/json")
 	public Response retrieveParent(@PathParam("id") String id) throws JsonProcessingException {
@@ -66,6 +68,7 @@ public class ParentService {
 	}
 	
 	@GET
+	@Secured
 	@Path("/{id}/students")
 	@Produces("application/json")
 	public Response retrieveChildren(@PathParam("id") String id) throws JsonProcessingException {
@@ -79,12 +82,14 @@ public class ParentService {
 	}
 
 	@PUT
+	@Secured
 	public Response updateParent(Parent parent) {
 		controller.udpate(parent);
 		return Response.status(200).entity("Okay").build();
 	}
 
 	@DELETE
+	@Secured
 	public Response deleteParent(Parent parent) {
 		controller.delete(parent);
 		return Response.status(200).entity("Okay").build();
